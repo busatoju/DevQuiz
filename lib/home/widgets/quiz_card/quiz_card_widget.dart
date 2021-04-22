@@ -8,44 +8,52 @@ class QuizCardWidget extends StatelessWidget {
   final String title;
   final String completed;
   final double percent;
-  QuizCardWidget({required this.title, required this.completed, required this.percent});
+  final VoidCallback onTap;
+
+  QuizCardWidget({required this.title, 
+  required this.completed, 
+  required this.percent,
+  required this.onTap,});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(16.0),
-      decoration: BoxDecoration(
-        border: Border.fromBorderSide(BorderSide(color: AppColors.white)),
-        color: AppColors.white,
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            height: 40,
-            width: 40,
-            child: Image.asset(AppImages.data),
-          ),
-          SizedBox(height: 10.0),
-          Text(title, style: AppTextStyles.heading15),
-          SizedBox(height: 10.0),
-          Row(
-            children: [
-              Expanded(
-                  child: Text(
-                completed,
-                style: AppTextStyles.body11,
-              )),
-              Expanded(
-                flex: 2,
-                child: ProgressIndicatorWidget(
-                  value: percent,
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.all(16.0),
+        decoration: BoxDecoration(
+          border: Border.fromBorderSide(BorderSide(color: AppColors.white)),
+          color: AppColors.white,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              height: 40,
+              width: 40,
+              child: Image.asset(AppImages.data),
+            ),
+            SizedBox(height: 10.0),
+            Text(title, style: AppTextStyles.heading15),
+            SizedBox(height: 10.0),
+            Row(
+              children: [
+                Expanded(
+                    child: Text(
+                  completed,
+                  style: AppTextStyles.body11,
+                )),
+                Expanded(
+                  flex: 2,
+                  child: ProgressIndicatorWidget(
+                    value: percent,
+                  ),
                 ),
-              ),
-            ],
-          )
-        ],
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
