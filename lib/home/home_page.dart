@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
-        statusBarIconBrightness: Brightness.dark,
+        statusBarIconBrightness: Brightness.light,
       ),
       child: controller.state == HomeState.success
           ? Scaffold(
@@ -82,7 +82,7 @@ class _HomePageState extends State<HomePage> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) => ChallengePage(
-                                                  questions: e.questions,
+                                                  questions: e.questions,title: e.title,
                                                 )));
                                   },
                                 ))
